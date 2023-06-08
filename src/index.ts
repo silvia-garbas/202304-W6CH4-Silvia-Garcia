@@ -19,16 +19,13 @@ if (options.version) {
 
 const addition = (a: number, b: number) => a + b;
 const substraction = (a: number, b: number) => a - b;
-const division = (a: number, b:number) => a/b;
-const multiplication = (a: number, b: number) => a*b
+const division = (a: number, b: number) => a / b;
+const multiplication = (a: number, b: number) => a * b;
 
 const server = http.createServer((req, res) => {
-  if (!req.url) {
-    server.emit('error', new Error('No url in the request'));
-    return;
-  }
+  console.log('Server ok');
+  const { pathname, query} = url.parse(req.url!);
 
-  const { pathname } = url.parse(req.url);
 
   if (req.method !== 'GET') {
     server.emit('error', new Error('Invalid method'));
@@ -38,10 +35,10 @@ const server = http.createServer((req, res) => {
   res.write(`<h1>Resultados ${pathname!.toUpperCase()}</h1>`);
   res.write(req.method);
   res.write(req.url);
-  res.write(`${addition(6,3)}`);
-  res.write(`${substraction(6,3)}`);
-  res.write (`${division (6,3)}`)
-  res.write (`${multiplication(6,3)}`)
+  res.write(`${addition(6, 3)}`);
+  res.write(`${substraction(6, 3)}`);
+  res.write(`${division(6, 3)}`);
+  res.write(`${multiplication(6, 3)}`);
   res.end();
 });
 
