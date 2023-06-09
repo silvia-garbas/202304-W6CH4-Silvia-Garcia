@@ -23,7 +23,8 @@ const server = http.createServer((req, res) => {
 
   const { pathname, query } = url.parse(req.url!);
 
-  //  If(pathname !== '/calculator'){
+  // Cuando tenga resuelto query y no sea null:
+ // If(pathname !== '/calculator'){
   //   res.statusCode = 404;
   //   res.end('Error. Not found.');
   //   return;
